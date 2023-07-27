@@ -24,4 +24,4 @@ Quiz4:
 ![Quiz 4 GUI Example](https://github.com/dawitalemu4/miscellaneous/assets/106638403/c3a3b59d-3593-474e-ad9c-b91a9fdb43ca)
 
 Quiz3:
-![Quiz3 example](https://github.com/dawitalemu4/miscellaneous/assets/106638403/30b52319-d0b7-41cb-bb50-8ec72b564510)
+![Quiz3 example](https://github.com/dawitalemu4/miscellaneous/assets/106638403/30b52319-d0b7-41cb-bb50-8ec72b564510) 
