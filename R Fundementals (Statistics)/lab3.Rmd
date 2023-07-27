@@ -1,0 +1,58 @@
+# reading the csv file
+data <- read.csv("C:/Users/vshrestha/Desktop/birthweight2000.csv")
+
+head(data)
+
+# a. plotting a histogram
+hist(data$dbirwt)
+hist(data$dmeduc)
+
+# c. mean and sd
+mean(data$dbirwt) #mean
+sd(data$dbirwt) # standard deviation
+
+# d. proportion of bw
+point = mean(data$dbirwt) + sd(data$dbirwt)
+point
+# indicator
+data$indicator <- 0
+data$indicator[data$dbirwt<=point] <- 1
+View(data)
+# finding the proportion
+mean(data$indicator)
+
+# 3. mean 
+# a. mean of white race
+mean(data$dbirwt[data$mrace==1])
+mean(data$dbirwt[data$mrace==2])
+
+mean(data$lowbirth[data$mrace==1])
+mean(data$lowbirth[data$mrace==2])
+
+# d. 
+data$lowbirth <- 0
+data$lowbirth[data$dbirwt <= 2500] <- 1
+mean(data$lowbirth)
+
+table(data$dmeduc) # show distinct values of mother's education
+
+educ <- seq(6, 17, 1)
+lb_educ <- rep(0, length(educ))
+length(educ) == length(lb_educ)
+
+lb_educ[1] <- mean(data$lowbirth[data$dmeduc == 6])
+lb_educ[2] <- mean(data$lowbirth[data$dmeduc == 7])
+lb_educ[3] <- mean(data$lowbirth[data$dmeduc == 8])
+lb_educ[4] <- mean(data$lowbirth[data$dmeduc == 9])
+#follow through 
+
+#loop 
+j <- 6
+for(i in 1:length(educ)){
+  lb_educ[i] <- mean(data$lowbirth[data$dmeduc == j])
+  j <- j+1
+}
+
+plot(educ, lb_educ)
+
+
