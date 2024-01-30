@@ -1,0 +1,58 @@
+#Page {
+    display: flex;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#NameButton {
+    display: flex;
+    position: absolute;
+    width: 80%;
+    height: 10%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    border: 0px solid black;
+    background-color: #6495ed;
+    color: white;
+    font-family: "Workbench";
+    transition: transform 0.5s ease-in-out;
+    z-index: 2;
+}
+
+#NameButton:hover {
+    opacity: 0.95;
+    cursor: pointer;
+}
+
+#NameButton.slideUp {
+    transform: translateY(-60px);
+}
+
+#FormContainer {
+    display: none;
+    position: relative;
+    width: 80%;
+    height: 17%;
+    margin-top: 10%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+#NameInput {
+    display: inherit;
+    width: 90%;
+}
+
+#SubmitButton {
+    display: inherit;
+    border-radius: 25px;
+    border: 1px solid black;
+    padding: 5px 10px;
+    cursor: pointer;
+}
