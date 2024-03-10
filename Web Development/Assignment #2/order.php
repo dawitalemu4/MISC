@@ -1,12 +1,12 @@
 <?php
     $showForm = true;
     $isFormValid = true;
-    $usernameError = "";
-    $passwordError = "";
-    $billingError = "";
-    $dropdownError = "";
+    $textboxError = "Textbox field is required"; 
+    $usernameError = $passwordError = $billingError = $dropdownError = "";
 
     $firstName = $lastName = $address = $city = $state = $cardNumber = $cardMonth = $cardYear = $cardCVV = $billingFirstName = $billingLastName = $billingAddress = $billingCity = $billingState = $username = $password = $confirmedPassword = "";
+    $firstNameError = $lastNameError = $addressError = $cityError = $cardNumberError = $cardCVVError = "";
+    $textboxErrorArray = [$firstNameError, $lastNameError, $addressError, $cityError, $cardNumberError, $cardCVVError];
 
     if (isset($_POST["submit"])) {
         $billingButton=$_POST["billingButton"];
@@ -27,12 +27,19 @@
         $username=$_POST["username"];
         $password=$_POST["password"];
         $confirmedPassword=$_POST["confirmedPassword"];
+        $textboxDataArray = [$firstName, $lastName, $address, $city, $cardNumber, $cardCVV];
 
         if ($password !== $confirmedPassword) {
             $passwordError = "Passwords do not match";
             $isFormValid = false;
         }
-    
+
+        for ($i = 0; $i <= count($textboxDataArray); $i++) {
+            if (strlen(trim($textboxDataArray[$i])) === 0) {
+                $textboxErrorArray[$i] = $textboxError;
+            }
+        } 
+
         if (strlen(trim($username)) < 5) {
             $usernameError = "Username must be at least 5 characters long";
             $isFormValid = false;
@@ -83,10 +90,14 @@
                 <fieldset>
                     <legend class="Legend">Personal Info and Delivery Address</legend>
                     <input type="text" placeholder="First Name" name="firstName" value="<?php echo $firstName; ?>" required>
+                    <span><?php echo $firstNameError; ?></span>
                     <input type="text" placeholder="Last Name" name="lastName" value="<?php echo $lastName; ?>" required>
+                    <span><?php echo $firstNameError; ?></span>
                     <input type="text" placeholder="Street Address" name="address" value="<?php echo $address; ?>" required>
+                    <span><?php echo $addressError; ?></span>
                     <input type="text" placeholder="City" name="city" value="<?php echo $city; ?>" required>
-                    <select name="state" value="<?php echo $state; ?>" required>>
+                    <span><?php echo $cityError; ?></span>
+                    <select name="state" value="<?php echo $state; ?>" required>
                         <option value="">State</option>
                         <option value="AL">AL</option>
                         <option value="AK">AK</option>
@@ -155,6 +166,7 @@
                     </div>
                     <div>
                         <input type="text" placeholder="Card Number" name="cardNumber" value="<?php echo $cardNumber; ?>" required>
+                        <span><?php echo $cardNumberError; ?></span>
                         <select name="cardMonth" value="<?php echo $cardMonth; ?>" required>
                             <option value="">Expiration Month</option>
                             <option value="01">01</option>
@@ -182,6 +194,7 @@
                         </select>
                         <span><?php echo $dropdownError; ?></span>
                         <input type="text" placeholder="CVV" name="cardCVV" value="<?php echo $cardCVV; ?>" required>
+                        <span><?php echo $cardCVVError; ?></span>
                     </div>
                 </fieldset>
                 <fieldset>
