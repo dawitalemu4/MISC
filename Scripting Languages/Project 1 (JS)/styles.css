@@ -1,0 +1,12 @@
+body {
+    text-align: center;
+}
+
+#gamePlay,
+#gameResult {
+    margin-top: 20px;
+}
+
+.gameButton {
+    margin: 5px;
+}

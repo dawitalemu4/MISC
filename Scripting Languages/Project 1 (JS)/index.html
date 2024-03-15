@@ -1,0 +1,28 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>Rock, Scissors, Paper, Lizard, Spock</h1>
+    <div id="gameSetup">
+      <label for="roundsInput">Number of Rounds:</label>
+      <input type="number" id="roundsInput" min="1" value="0">
+      <button id="startButton">Start</button>
+    </div>
+    <div id="gamePlay" style="display: none;">
+      <p>Rounds Remaining: <span id="roundsRemaining"></span></p>
+      <div id="playerButtons">
+        <button class="gameButton" data-choice="rock">Rock</button>
+        <button class="gameButton" data-choice="scissors">Scissors</button>
+        <button class="gameButton" data-choice="paper">Paper</button>
+        <button class="gameButton" data-choice="lizard">Lizard</button>
+        <button class="gameButton" data-choice="spock">Spock</button>
+      </div>
+      <p>Computer's Choice: <span id="computerChoice"></span></p>
+      <p id="result"></p>
+    </div>
+    <div id="gameResult" style="display: none;">
+      <h2>Game Over</h2>
+      <p id="finalResult"></p>
+    </div>
+  </body>
+</html>
