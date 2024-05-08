@@ -11,4 +11,4 @@ function inquiry_request_form_shortcode() {
 }
 
 // Register the shortcode
-add_shortcode('example_inquiry_form', 'inquiry_request_form_shortcode');
+add_shortcode('custom-inquiry-form', 'inquiry_request_form_shortcode');

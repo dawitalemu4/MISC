@@ -1,97 +1,60 @@
-body {
-  margin: 0;
-  padding: 0 20px;
-  background-color: #f4f4f4;
-  font-family: Arial, sans-serif;
+
+.form-container {
+	display: flex;
+	flex-direction: column;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  padding: 24px;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.form-container div {
+	display: flex;
+	flex-direction: column;
+	padding: 15px;
 }
 
-input, select {
-  padding: 8px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  /* margin-bottom: 10px; */
+.form-container input[type="text"],
+.form-container input[type="tel"],
+.form-container select {
+	max-width: 600px;
+	padding: 5px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
 }
 
-input[type="checkbox"] {
-  transform: scale(1.5);
-  margin-right: 8px;
+.form-container span {
+	color: red;
 }
 
-label {
-  padding-bottom: 2px;
+.form-container label {
+	font-weight: bold;
+	margin-bottom: 5px;
 }
 
-#action-container {
-  margin: 10px 0;
-} 
-
-span.error {
-  color: red;
-  font-size: small;
-  margin-bottom: 12px;
-  padding: 2px;
+.form-container input[type="submit"]:hover {
+	cursor: pointer;
+	opacity: 0.8;
 }
 
-.save-button {
-  padding: 8px 20px;
-  border-radius: 4px;
-  /* border: 1px solid #ccc; */
-  font-size: 16px;
-  margin: 10px 10px 10px 0;
-  background-color: #007bff;
-  color: #fff;
-  cursor: pointer;
+#submit-container {
+	flex-direction: row;
 }
 
-/* form {
-  display: grid;
-  grid-template-columns: 10em 1fr;
-  grid-template-rows: auto;
-  gap: 6px 10px;
-  padding: 24px;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+#submit-container input {
+	max-width: 600px;
+	font-weight: bold;
+	background-color: #24a0ed;
+	color: white;
+	padding: 10px 15px;
+	padding-top: 11px;
+	border-radius: 25px;
+	border: none;
 }
 
-label {
-  text-align: right;
-  align-items: center;
+#submit-container input[type="reset"] {
+	background-color: red;
+	color: white;
+	margin-left: 10px;
 }
 
-#action-container {
-  grid-column: 2/3;
-} */
-
-
-/* User Listing */
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-table,
-th,
-td {
-  border: 1px solid black;
-}
-
-th,
-td {
-  padding: 8px;
-  text-align: left;
-}
-
-th {
-  background-color: #f2f2f2;
+#submit-container input[type="reset"]:hover {
+	cursor: pointer;
+	opacity: 0.8;
 }
