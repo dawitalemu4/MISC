@@ -17,8 +17,8 @@
 function inquiry_request_admin_menu()
 {
   add_menu_page(
-    'Inquiry Request Example', // Page title (in the browser tab)
-    'Inquiry Request Example', // Menu title (in the sidebar)
+    'Custom Inquiry Form', // Page title (in the browser tab)
+    'Custom Inquiry Form', // Menu title (in the sidebar)
     'manage_options',   // Capability required to access the menu item (admin)
     'sample_inquiries', // Unique slug for the menu item (used in URL)
     'inquiry_request_admin_page' // Function to call when the menu item is clicked (this function displays the page content)

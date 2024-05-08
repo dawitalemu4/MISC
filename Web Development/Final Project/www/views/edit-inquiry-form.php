@@ -1,42 +1,106 @@
 <?php
-/*
-* Explanation of the Code:
 
-* Form Container: The form is contained within a div with the class wrap which is typical for WordPress admin panels to maintain consistent styling.
+    $isFormValid = true;
+    $firstNameError = $lastNameError = $emailError = $phoneError = $campusError = '';
 
-* Method and Action: The form uses the POST method to send the data securely to admin-post.php, which handles admin-side form submissions in WordPress.
+    if (count($_POST) > 0) {
 
-* Hidden Fields:
-The action hidden field tells WordPress which action to trigger on form submission. This should correspond to a function hooked to admin_post_sample_inquiry_update.
-The inquiry_id hidden field holds the ID of the inquiry being edited, ensuring the correct record is updated in the database.
+        if (empty($_POST['firstName'])) {
+            $firstNameError = 'First name is required.';
+            $isFormValid = false;
+        }
 
-* Pre-filled Input Fields: Each input is pre-filled with data using esc_attr($inquiry->field_name) to ensure HTML encoding and prevent XSS attacks.
-*/
+        if (empty($_POST['lastName'])) {
+            $lastNameError = 'Last name is required.';
+            $isFormValid = false;
+        }
 
-// Ensure the $inquiry object containing the data is available. If not, the form will not be displayed.
+        if (empty($_POST['email'])) {
+            $emailError = 'Email is required.';
+            $isFormValid = false;
+        } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+            $emailError = 'Invalid email format.';
+            $isFormValid = false;
+        }
+
+        if (empty($_POST['phone'])) {
+            $phoneError = 'Phone is required.';
+            $isFormValid = false;
+        }
+
+        if (empty($_POST['campus'])) {
+            $campusError = 'Please select a campus.';
+            $isFormValid = false;
+        }
+    }
+
 if (isset($inquiry)) : ?>
     <div class="wrap">
         <h1>Edit Inquiry</h1>
         <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" class="form-container">
-            <input type="hidden" name="action" value="handle_inquiry_update">
+            <div>
+                <input type="hidden" name="action" value="handle_inquiry_update">
+                <input type="hidden" name="inquiry_id" value="<?php echo intval($inquiry->id); ?>">
+            </div>
+
+            <div>
+                <label for="firstName">First Name</label>
+                <input type="text" name="firstName" value="<?php echo esc_attr($inquiry->firstName); ?>">
+                <span><?php echo $firstNameError ?? ''; ?></span>
+            </div>
+
+            <div>
+                <label for="lastName">Last Name</label>
+                <input type="text" name="lastName" value="<?php echo esc_attr($inquiry->lastName); ?>">
+                <span><?php echo $lastNameError ?? ''; ?></span>
+            </div>
+
+            <div>
+                <label for="email">Email</label>
+                <input type="text" name="email" value="<?php echo esc_attr($inquiry->email); ?>">
+                <span><?php echo $emailError ?? ''; ?></span>
+            </div>
+
+            <div>
+                <label for="phone">Phone Number</label>
+                <input type="text" name="phone" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" value="<?php echo esc_attr($inquiry->phone); ?>">
+                <span><?php echo $phoneError ?? ''; ?></span>
+            </div>
+
+            <div>
+                <label for="campus">Which campus are interesting in?</label>
+                <select name="campus">
+                    <option value="">Please select...</option>
+                    <option value='Summit View Academy' <?= (esc_attr($inquiry->phone) === 'Summit View Academy') ? 'selected' : ''; ?>>Summit View Academy</option>
+                    <option value='Crestwood Institute' <?= (esc_attr($inquiry->phone) === 'Crestwood Institute') ? 'selected' : ''; ?>>Crestwood Institute</option>
+                    <option value='Pine Hill College' <?= (esc_attr($inquiry->phone) === 'Pine Hill College') ? 'selected' : ''; ?>>Pine Hill College</option>
+                    <option value='Blue Ridge Campus' <?= (esc_attr($inquiry->phone) === 'Blue Ridge Campus') ? 'selected' : ''; ?>>Blue Ridge Campus</option>
+                    <option value='Starlight Campus' <?= (esc_attr($inquiry->phone) === 'Starlight Campus') ? 'selected' : ''; ?>>Starlight Campus</option>
+                </select>
+                <span><?php echo $campusError ?? ''; ?></span>
+            </div>
+
+            <div>
+                <label for="workshop">Which workshop would you like to learn about?</label>
+                <input type="text" name="workshop" placeholder="Workshop" value="<?php echo esc_attr($inquiry->workshop); ?>">
+            </div>
+
+            <div>
+                <label for="completed">Completed</label>
+                <input type="checkbox" name="completed" <?= (esc_attr($inquiry->completed) === '1') ? 'checked' : ''; ?>>                
+            </div>
+
+            <div>
+                <input type="submit" value="Update Inquiry" class="button-primary">
+            </div>
+        </form>
+
+        <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" class="form-container">
+            <input type="hidden" name="action" value="handle_inquiry_delete">
             <input type="hidden" name="inquiry_id" value="<?php echo intval($inquiry->id); ?>">
-
-            <label for="first_name">First Name</label>
-            <input type="text" name="first_name" id="first_name" value="<?php echo esc_attr($inquiry->first_name); ?>">
-
-            <label for="last_name">Last Name</label>
-            <input type="text" name="last_name" id="last_name" value="<?php echo esc_attr($inquiry->last_name); ?>">
-
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" value="<?php echo esc_attr($inquiry->email); ?>">
-
-            <label for="state">State</label>
-            <input type="text" name="state" id="state" value="<?php echo esc_attr($inquiry->state); ?>" readonly>
-
-            <label for="phone_number">Phone Number</label>
-            <input type="tel" name="phone_number" id="phone_number" value="<?php echo esc_attr($inquiry->phone_number); ?>">
-
-            <input type="submit" value="Update Inquiry" class="button-primary">
+            <div>
+                <input type="submit" value="Delete Inquiry" class="button-primary" style="background-color:red;">
+            </div>
         </form>
     </div>
 <?php endif; ?>

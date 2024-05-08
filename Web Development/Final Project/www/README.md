@@ -2,7 +2,7 @@
 - Use this plugin as a starting point for your inquiry request plugin for the term project. Feel free to extend it to your needs to meet the requirements of the project.
 
 ## Description
--  This is a plugin for managing inquiries with frontend form and backend data management. For the shortcode to display the form, use [example_inquiry_form]. Please feel free to change the shortcode to whatever you want in the includes/shortcode-handler.php file on line 14.
+-  This is a plugin for managing inquiries with frontend form and backend data management. For the shortcode to display the form, use [custom-inquiry-form]. Please feel free to change the shortcode to whatever you want in the includes/shortcode-handler.php file on line 14.
 
 - Every file in the plugin is well documented, so you can easily understand what each file does.
 
