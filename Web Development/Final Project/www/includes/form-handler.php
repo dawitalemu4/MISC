@@ -12,7 +12,7 @@ function handle_inquiry_submission() {
         $firstName = sanitize_text_field($_POST['firstName']);
         $lastName = sanitize_text_field($_POST['lastName']);
         $email = sanitize_email($_POST['email']);
-        $phone = sanitize_email($_POST['phone']);
+        $phone = sanitize_text_field($_POST['phone']);
         $campus = sanitize_text_field($_POST['campus']);
         $workshop = sanitize_text_field($_POST['workshop']);
 
@@ -30,17 +30,14 @@ function handle_inquiry_submission() {
 
             $to = $email;
             $subject = 'Inquiry Submission Confirmation';
-            $message = "Thank you for your inquiry. We will get back to you soon.
-            Name: $firstName $lastName
-            Email: $email
-            Phone: $phone
-            Campus: $campus
-            Workshop: $workshop
-            ";
-            $headers = 'From: '. $email . "\r\n" .
-            'Reply-To: ' . $email . "\r\n";
+            $message = "Thank you for your inquiry. We will get back to you soon." .
+            "\nName: " . $firstName . " " . $lastName .
+            "\nEmail: " . $email .
+            "\nPhone: " . $phone .
+            "\nCampus: " . $campus .
+            "\nWorkshop: " . $workshop;
 
-            wp_mail($to, $subject, $message, $headers);
+            wp_mail($to, $subject, $message);
             
             return true; // Return true if submission is successful
         }
@@ -71,7 +68,7 @@ function handle_inquiry_update() {
     $firstName = sanitize_text_field($_POST['firstName']);
     $lastName = sanitize_text_field($_POST['lastName']);
     $email = sanitize_email($_POST['email']);
-    $phone = sanitize_email($_POST['phone']);
+    $phone = sanitize_text_field($_POST['phone']);
     $campus = sanitize_text_field($_POST['campus']);
     $workshop = sanitize_text_field($_POST['workshop']);
     $inquiry_id = intval($_POST['inquiry_id']);

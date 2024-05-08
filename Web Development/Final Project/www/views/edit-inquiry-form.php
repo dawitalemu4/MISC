@@ -34,7 +34,7 @@
         }
     }
 
-if (isset($inquiry)) : ?>
+if (isset($inquiry)): ?>
     <div class="wrap">
         <h1>Edit Inquiry</h1>
         <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" class="form-container">
@@ -44,38 +44,38 @@ if (isset($inquiry)) : ?>
             </div>
 
             <div>
-                <label for="firstName">First Name</label>
-                <input type="text" name="firstName" value="<?php echo esc_attr($inquiry->firstName); ?>">
+                <label for="firstName">First Name <span>*</span></label>
+                <input type="text" name="firstName" placeholder="First Name" value="<?php echo esc_attr($inquiry->firstName); ?>">
                 <span><?php echo $firstNameError ?? ''; ?></span>
             </div>
 
             <div>
-                <label for="lastName">Last Name</label>
-                <input type="text" name="lastName" value="<?php echo esc_attr($inquiry->lastName); ?>">
+                <label for="lastName">Last Name <span>*</span></label>
+                <input type="text" name="lastName" placeholder="Last Name" value="<?php echo esc_attr($inquiry->lastName); ?>">
                 <span><?php echo $lastNameError ?? ''; ?></span>
             </div>
 
             <div>
-                <label for="email">Email</label>
-                <input type="text" name="email" value="<?php echo esc_attr($inquiry->email); ?>">
+                <label for="email">Email <span>*</span></label>
+                <input type="text" name="email" placeholder="Email" value="<?php echo esc_attr($inquiry->email); ?>">
                 <span><?php echo $emailError ?? ''; ?></span>
             </div>
 
             <div>
-                <label for="phone">Phone Number</label>
-                <input type="text" name="phone" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" value="<?php echo esc_attr($inquiry->phone); ?>">
+                <label for="phone">Phone Number <span>*</span></label>
+                <input type="text" name="phone" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" placeholder="Phone Number Ex: 1234567890" value="<?php echo esc_attr($inquiry->phone); ?>">
                 <span><?php echo $phoneError ?? ''; ?></span>
             </div>
 
             <div>
-                <label for="campus">Which campus are interesting in?</label>
+                <label for="campus">Which campus are interesting in? <span>*</span></label>
                 <select name="campus">
                     <option value="">Please select...</option>
-                    <option value='Summit View Academy' <?= (esc_attr($inquiry->phone) === 'Summit View Academy') ? 'selected' : ''; ?>>Summit View Academy</option>
-                    <option value='Crestwood Institute' <?= (esc_attr($inquiry->phone) === 'Crestwood Institute') ? 'selected' : ''; ?>>Crestwood Institute</option>
-                    <option value='Pine Hill College' <?= (esc_attr($inquiry->phone) === 'Pine Hill College') ? 'selected' : ''; ?>>Pine Hill College</option>
-                    <option value='Blue Ridge Campus' <?= (esc_attr($inquiry->phone) === 'Blue Ridge Campus') ? 'selected' : ''; ?>>Blue Ridge Campus</option>
-                    <option value='Starlight Campus' <?= (esc_attr($inquiry->phone) === 'Starlight Campus') ? 'selected' : ''; ?>>Starlight Campus</option>
+                    <option value='Summit View Academy' <?= (esc_attr($inquiry->campus) === 'Summit View Academy') ? 'selected' : ''; ?>>Summit View Academy</option>
+                    <option value='Crestwood Institute' <?= (esc_attr($inquiry->campus) === 'Crestwood Institute') ? 'selected' : ''; ?>>Crestwood Institute</option>
+                    <option value='Pine Hill College' <?= (esc_attr($inquiry->campus) === 'Pine Hill College') ? 'selected' : ''; ?>>Pine Hill College</option>
+                    <option value='Blue Ridge Campus' <?= (esc_attr($inquiry->campus) === 'Blue Ridge Campus') ? 'selected' : ''; ?>>Blue Ridge Campus</option>
+                    <option value='Starlight Campus' <?= (esc_attr($inquiry->campus) === 'Starlight Campus') ? 'selected' : ''; ?>>Starlight Campus</option>
                 </select>
                 <span><?php echo $campusError ?? ''; ?></span>
             </div>

@@ -36,40 +36,40 @@
 ?>
 <div class="example-inquiry-form">
 
-    <h2>Request Information</h2>
-    <p>Fill out the form below and one of our admissions counselors will contact you with more information.</p>
-
     <?php if (isset($success) && $success): ?>
         <h2 class="success">Thank you for your inquiry!</h2>
     <?php else: ?>
 
+    <h2>Request Information</h2>
+    <p>Fill out the form below and one of our admissions counselors will contact you with more information.</p>
+
     <form method="post" action="" class="form-container">
         <div>
-            <label for="firstName">First Name</label>
+            <label for="firstName">First Name <span>*</span></label>
             <input type="text" name="firstName" placeholder="First Name" value="<?= $_POST['firstName'] ?? ''; ?>">
             <span><?php echo $firstNameError ?? ''; ?></span>
         </div>
 
         <div>
-            <label for="lastName">Last Name</label>
+            <label for="lastName">Last Name <span>*</span></label>
             <input type="text" name="lastName" placeholder="Last Name" value="<?= $_POST['lastName'] ?? ''; ?>">
             <span><?php echo $lastNameError ?? ''; ?></span>
         </div>
 
         <div>
-            <label for="email">Email</label>
+            <label for="email">Email <span>*</span></label>
             <input type="text" name="email" placeholder="Email" value="<?= $_POST['email'] ?? ''; ?>">
             <span><?php echo $emailError ?? ''; ?></span>
         </div>
 
         <div>
-            <label for="phone">Phone Number</label>
+            <label for="phone">Phone Number <span>*</span></label>
             <input type="text" name="phone" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" placeholder="Phone Number Ex: 1234567890" value="<?= $_POST['phone'] ?? ''; ?>" >
             <span><?php echo $phoneError ?? ''; ?></span>
         </div>
 
         <div>
-            <label for="campus">Which campus are interesting in?</label>
+            <label for="campus">Which campus are interesting in? <span>*</span></label>
             <select name="campus">
                 <?php $selectedCampus = $_POST['campus'] ?? ''; ?>
                 <option value="">Please select...</option>
