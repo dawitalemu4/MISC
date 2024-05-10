@@ -29,7 +29,7 @@
                 <td><?php echo esc_html($inquiry->submitted_date); ?></td>
                 <td><?php echo (esc_html($inquiry->completed) === '1' ? 'Yes' : 'No'); ?></td>
                 <td>
-                    <a href="<?= esc_url(add_query_arg('edit', $inquiry->id, menu_page_url('sample_inquiries', false))); ?>">Edit</a>
+                    <a href="<?= esc_url(add_query_arg('edit', $inquiry->id, menu_page_url('custom_inquiries', false))); ?>">Edit</a>
                 </td>
             </tr>
         <?php endforeach; ?>

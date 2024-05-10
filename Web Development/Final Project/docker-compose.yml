@@ -1,16 +1,16 @@
 services:
-  web:
-    build:
-      context: .
-      dockerfile: Dockerfile.php
-    # image: php:8.3.4-apache
-    container_name: php-apache
-    ports:
-      - "8000:80"
-    volumes:
-      - ./www:/var/www/html
-    # depends_on:
-    #   - db
+  # web:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.php
+  #   # image: php:8.3.4-apache
+  #   container_name: php-apache
+  #   ports:
+  #     - "8000:80"
+  #   volumes:
+  #     - ./www:/var/www/html
+  #   # depends_on:
+  #   #   - db
 
   wordpress:
     image: wordpress
