@@ -2,7 +2,7 @@
 /**
  * Sets up the admin page and handles the display and edit functionalities for inquiries.
  * 
- * The function inquiry_request_admin_menu() adds a new page to the WordPress admin menu specifically for managing the sample inquiries. It registers another function inquiry_request_admin_page() to render the page content.
+ * The function inquiry_request_admin_menu() adds a new page to the WordPress admin menu specifically for managing the custom inquiries. It registers another function inquiry_request_admin_page() to render the page content.
  * 
  * The inquiry_request_admin_page() function checks first if there is an 'edit' request by looking at the URL parameters. If there is an inquiry ID to edit:
  * - It retrieves the inquiry details from the database.
@@ -20,7 +20,7 @@ function inquiry_request_admin_menu()
     'Custom Inquiry Form', // Page title (in the browser tab)
     'Custom Inquiry Form', // Menu title (in the sidebar)
     'manage_options',   // Capability required to access the menu item (admin)
-    'sample_inquiries', // Unique slug for the menu item (used in URL)
+    'custom_inquiries', // Unique slug for the menu item (used in URL)
     'inquiry_request_admin_page' // Function to call when the menu item is clicked (this function displays the page content)
   );
 }

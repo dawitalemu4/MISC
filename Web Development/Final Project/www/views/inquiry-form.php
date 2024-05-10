@@ -34,7 +34,7 @@
         }
     }
 ?>
-<div class="example-inquiry-form">
+<div>
 
     <?php if (isset($success) && $success): ?>
         <h2 class="success">Thank you for your inquiry!</h2>

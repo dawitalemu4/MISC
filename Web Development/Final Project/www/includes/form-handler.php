@@ -93,7 +93,7 @@ function handle_inquiry_update() {
     } else {
         // Redirect back to the edit page if any field is empty with an error message
         wp_redirect(add_query_arg([
-            'page' => 'sample_inquiries', // Page slug
+            'page' => 'custom_inquiries', // Page slug
             'edit' => $inquiry_id,    // Query arg for the inquiry ID
             'error' => 'empty_fields' // Query arg for error message
         ], admin_url('admin.php')));
@@ -102,7 +102,7 @@ function handle_inquiry_update() {
 
     // Redirect back to the list page with a success message
     wp_redirect(add_query_arg([
-        'page' => 'sample_inquiries', // Page slug
+        'page' => 'custom_inquiries', // Page slug
         'updated' => 'true'           // Query arg for success message
     ], admin_url('admin.php')));      // Redirect to the admin page
     exit;
@@ -138,7 +138,7 @@ function handle_inquiry_delete() {
 
     // Redirect back to the list page with a success message
     wp_redirect(add_query_arg([
-        'page' => 'sample_inquiries', // Page slug
+        'page' => 'custom_inquiries', // Page slug
         'updated' => 'true'           // Query arg for success message
     ], admin_url('admin.php')));      // Redirect to the admin page
     exit;
